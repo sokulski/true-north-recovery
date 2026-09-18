@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Route the existing same-origin API path to the function.
+# netlify.toml redirects are evaluated BEFORE public/_redirects,
+# so this matches before the SPA catch-all.
+[[redirects]]
+  from = "/api/contact"
+  to = "/.netlify/functions/contact"
+  status = 200
